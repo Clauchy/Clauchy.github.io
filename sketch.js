@@ -37,7 +37,7 @@ function setup() {
 function draw() {
   
   //background(red, green, blue) para repintar el fondo y que no se vea la estela del mouse
-  background(background1);
+  //background(background1);
 	
 	//ver la funcion estilo1 abajo
 	estilo1();
@@ -50,6 +50,7 @@ function draw() {
 	//si se le pone el mouse en la posicion, sigue la posicion del mouse
 	ellipse(mouseX, mouseY, diametro, diametro);
 	
+	muchasveces();
 }
 
 //declaracion de funcion de estilo de elipse
@@ -63,10 +64,38 @@ function estilo1(){
 	
 	//stroke(red, green, blue) es el color del borde del pincel
 	stroke(255,0,5);
-  
+	
 }
 
 //cambia el tamano del lienzo si achico o agrando la ventana
 function windowResized(){
   resizeCanvas(windowWidth,windowHeight);
+}
+
+//funcion para iterar
+function muchasveces(){
+  
+  var diez = 10;
+  
+  //for(inicio;condicion;actualizacion) {lo que sea que este aqui}
+  for(var a = 0; a < 100;a++){
+    noStroke();
+    fill(random(255),random(255),random(255));
+    ellipse(random(width),random(height), diez, diez);
+  }
+  
+}
+
+//declaramos la funcion para cuando el mouse esta haciendo click
+function mousePressed(){
+  
+  //if condicional. se ejecuto solo si la expresion es verdadera
+  if (mouseX > width/2){
+    console.log("hola");
+    background(background1);
+  }
+  else {
+    console.log("chao");
+    background(0,0,0);
+  }
 }
