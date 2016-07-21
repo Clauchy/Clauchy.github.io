@@ -18,17 +18,18 @@
 //function nombreFunction(){instrucciones de la funcion;}
 //para ejecutar una funcion se pone function();
 
-var diametro=30;
+var i=0;
+var diametro;
+var background1=[100,50,150];
 
 //funcion setup se ejecuta una vez al principio
 function setup() {
   
 	//createCanvas(dimHor, dimVer) crea el lienzo
-	createCanvas(400,300);
+	createCanvas(windowWidth,windowHeight);
 
 	//backround(red,green,blue) define el color del fondo
-	background(0,255,0);
-	
+	background(background1);
 }
 
 
@@ -36,16 +37,18 @@ function setup() {
 function draw() {
   
   //background(red, green, blue) para repintar el fondo y que no se vea la estela del mouse
-  background(0,255,0);
+  background(background1);
 	
 	//ver la funcion estilo1 abajo
 	estilo1();
 	
-	diametro=diametro+1;
+	i=i+1;
+	
+	diametro=abs(sin(i*PI/60))*100+30;
 	
 	//ellipse(posX, posY, width, height) (medidas en pixeles) dibuja una elipse (el origen del lienzo es la esquina de arriba a la izquierda)
 	//si se le pone el mouse en la posicion, sigue la posicion del mouse
-	ellipse(mouseX, mouseY, diametro, 30);
+	ellipse(mouseX, mouseY, diametro, diametro);
 	
 }
 
@@ -61,4 +64,9 @@ function estilo1(){
 	//stroke(red, green, blue) es el color del borde del pincel
 	stroke(255,0,5);
   
+}
+
+//cambia el tamano del lienzo si achico o agrando la ventana
+function windowResized(){
+  resizeCanvas(windowWidth,windowHeight);
 }
